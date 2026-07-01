@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropertyGuru - Win $12,000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ─────────────────────────────────────────
+   CSS CUSTOM PROPERTIES (Design Tokens)
+───────────────────────────────────────── */
+:root {
+    --colour-fill-neutral-secondary:   #ffffff;
+    --colour-fill-active-primary:      #C20000;
+    --colour-text-button:              #ffffff;
+    --colour-text-active-primary:      #0D1011;
+    --colour-text-active-secondary:    #5A6067;
+    --colour-text-active-tertiary:     #ffffff;
+    --colour-text-inactive-primary:    #737D87;
+    --colour-fill-neutral-primary:     #EFF1F5;
+    --colour-fill-neutral-tertiary:    #C1C9D2;
+    --colour-fill-brand-red:           #C20000;
+    --colour-border-active-quinary:    #EFF1F5;
+    --colour-border-active-quaternary: #940000;
+    --colour-icon-active-primary:      #0D1011;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ─────────────────────────────────────────
+   PAGE WRAPPER
+───────────────────────────────────────── */
+.page-wrapper {
+    width: 100%;
+    max-width: 390px;
+    background: var(--colour-fill-neutral-secondary);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+}
+/* ─────────────────────────────────────────
+   HERO SECTION
+───────────────────────────────────────── */
+.hero {
+    background: var(--colour-fill-active-primary);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+/* Back navigation */
+.hero-nav {
+    min-height: 56px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-nav svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Hero body */
+.hero-body {
+    padding: 4px 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 210px;
+    border-radius: 24px;
+    object-fit: cover;
+    padding: 10px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hero-date {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.hero-title {
+    color: #ffffff;
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+/* ─────────────────────────────────────────
+   CONTENT SECTION
+───────────────────────────────────────── */
+.content {
+    background: var(--colour-fill-neutral-secondary);
+    padding: 24px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-heading {
+    color: var(--colour-text-active-primary);
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+/* ─────────────────────────────────────────
+   STEPS CARD
+───────────────────────────────────────── */
+.steps-card {
+    background: #ffffff;
+    border-radius: 16px;
+    outline: 1px solid var(--colour-border-active-quinary);
+    outline-offset: -1px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.step-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 24px;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 10px;
+}
+
+.step-label {
+    flex: 1;
+    color: var(--colour-text-active-primary);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+/* ─────────────────────────────────────────
+   CTA BUTTON
+───────────────────────────────────────── */
+.cta-button {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--colour-fill-active-primary);
+    box-shadow:
+        0px 2px 4px rgba(40, 44, 46, 0.12),
+        0px 2px 2px rgba(255, 255, 255, 0.40) inset;
+    border-radius: 100px;
+    outline: 1px solid var(--colour-border-active-quaternary);
+    outline-offset: -1px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.cta-button:hover {
+    background: #a50000;
+}
+
+.cta-button span {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+/* ─────────────────────────────────────────
+   DISCLAIMERS
+───────────────────────────────────────── */
+.disclaimer-sm {
+    text-align: center;
+    color: var(--colour-text-inactive-primary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.disclaimer-xs {
+    text-align: center;
+    color: var(--colour-text-inactive-primary);
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.24px;
+}
+
+/* ─────────────────────────────────────────
+   HOME INSIGHTS CARD
+───────────────────────────────────────── */
+.insights-card {
+    background: var(--colour-fill-neutral-primary);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* Insights Heading */
+.insights-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.insights-title-black {
+    color: var(--colour-text-active-primary);
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0.12px;
+}
+
+.insights-title-red {
+    color: var(--colour-fill-active-primary);
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0.12px;
+}
+
+/* ─────────────────────────────────────────
+   SCROLLABLE CARDS ROW
+───────────────────────────────────────── */
+.insight-cards-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.insight-cards-row::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Insight Card */
+.insight-card {
+    min-width: 200px;
+    width: 200px;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.insight-card-img {
+    width: 100%;
+    height: 130px;
+    background: var(--colour-fill-neutral-tertiary);
+    object-fit: cover;
+}
+
+.insight-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.insight-card-title {
+    color: var(--colour-text-active-primary);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.insight-card-desc {
+    color: var(--colour-text-active-secondary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* ─────────────────────────────────────────
+   CAROUSEL CONTROLS
+───────────────────────────────────────── */
+.carousel-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.carousel-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: background 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.carousel-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--colour-icon-active-primary);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ─────────────────────────────────────────
+   PRIZES SECTION
+───────────────────────────────────────── */
+.prizes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.prizes-heading {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.prizes-heading-black {
+    color: var(--colour-text-active-primary);
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.prizes-heading-red {
+    color: var(--colour-fill-active-primary);
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+/* ─────────────────────────────────────────
+   PRIZES CARD
+───────────────────────────────────────── */
+.prizes-card {
+    background: #ffffff;
+    border-radius: 16px;
+    outline: 1px solid var(--colour-border-active-quinary);
+    outline-offset: -1px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Prize Week Block */
+.prize-week {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Prize Badge */
+.prize-badge {
+    background: var(--colour-fill-brand-red);
+    border-radius: 8px;
+    padding: 4px 8px;
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+}
+
+.prize-badge span {
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.24px;
+}
+
+/* Prize Amounts Row */
+.prize-amounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 8px;
+}
+
+.prize-sm {
+    color: var(--colour-text-active-primary);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.prize-md {
+    color: var(--colour-text-active-primary);
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.prize-lg {
+    color: var(--colour-text-active-primary);
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0.12px;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    width: 100%;
+    background: var(--colour-border-active-quinary);
+}
+
+/* ─────────────────────────────────────────
+   T&C SECTION
+───────────────────────────────────────── */
+.tnc-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tnc-heading {
+    color: var(--colour-text-active-primary);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.tnc-text {
+    color: var(--colour-text-active-secondary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.tnc-link {
+    color: var(--colour-fill-active-primary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-decoration: underline;
+    line-height: 20px;
+    transition: opacity 0.2s ease;
+}
+
+.tnc-link:hover {
+    opacity: 0.75;
+}
+
+.tnc-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px;
+}
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <!-- ── HERO SECTION ── -->
+        <div class="hero">
+
+            <!-- Back Nav -->
+            <div class="hero-nav">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </div>
+
+            <!-- Hero Body -->
+            <div class="hero-body">
+                <img
+                    class="hero-image"
+                    src="https://braze-images.com/appboy/communication/assets/image_assets/images/6a450aae2e438600b7d9f822/original.png?1782909614"
+                    alt="Campaign Banner"
+                />
+                <div class="hero-text">
+                    <div class="hero-date">17 August – 6 September</div>
+                    <div class="hero-title">Your BIGGEST ASSET could win you $12,000!*</div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END HERO -->
+
+        <!-- ── CONTENT SECTION ── -->
+        <div class="content">
+
+            <!-- 3 Simple Steps -->
+            <div class="section-heading">3 simple steps:</div>
+
+            <div class="steps-card">
+                <div class="step-row">
+                    <img class="step-icon" src="https://braze-images.com/appboy/communication/assets/image_assets/images/6a450ac73a032a008368503f/original.png?1782909638" alt="Step 1"/>
+                    <div class="step-label">Open the PropertyGuru app</div>
+                </div>
+                <div class="step-row">
+                    <img class="step-icon" src="https://braze-images.com/appboy/communication/assets/image_assets/images/6a450ac73a032a008368503f/original.png?1782909638" alt="Step 2"/>
+                    <div class="step-label">Check your home value via My Property</div>
+                </div>
+                <div class="step-row">
+                    <img class="step-icon" src="https://braze-images.com/appboy/communication/assets/image_assets/images/6a450ac73a032a008368503f/original.png?1782909638" alt="Step 3"/>
+                    <div class="step-label">Turn on notifications for an extra entry</div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <button class="cta-button">
+                <span>Enter To Win</span>
+            </button>
+
+            <!-- Short Disclaimer -->
+            <div class="disclaimer-sm">*T&amp;Cs apply.</div>
+
+            <!-- Home Insights Card -->
+            <div class="insights-card">
+
+                <div class="insights-heading">
+                    <div>
+                        <span class="insights-title-black">Your </span>
+                        <span class="insights-title-red">Home Insights</span>
+                    </div>
+                    <div class="insights-title-black">at your fingertips</div>
+                </div>
+
+                <!-- Scrollable Cards Row -->
+                <div class="insight-cards-row">
+
+                    <div class="insight-card">
+                        <div class="insight-card-img"></div>
+                        <div class="insight-card-body">
+                            <div class="insight-card-title">Instant Valuation</div>
+                            <div class="insight-card-desc">
+                                Learn about your home value and how it changes over time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-card-img"></div>
+                        <div class="insight-card-body">
+                            <div class="insight-card-title">Market Trends</div>
+                            <div class="insight-card-desc">
+                                Stay updated on the trends that may affect your home's value
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn" aria-label="Previous">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn" aria-label="Next">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+            <!-- END Insights Card -->
+
+            <!-- Prizes Section -->
+            <div class="prizes-section">
+
+                <div class="prizes-heading">
+                    <div class="prizes-heading-black">Don't miss the chance to</div>
+                    <div class="prizes-heading-red">win up to $12,000 in prizes!*</div>
+                </div>
+
+                <div class="prizes-card">
+
+                    <!-- Week 1 -->
+                    <div class="prize-week">
+                        <div class="prize-badge"><span>Week 1 Prizes</span></div>
+                        <div class="prize-amounts">
+                            <div class="prize-sm">$1,000</div>
+                            <div class="prize-md">$2,000</div>
+                            <div class="prize-lg">$5,000</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Week 2 -->
+                    <div class="prize-week">
+                        <div class="prize-badge"><span>Week 2 Prizes</span></div>
+                        <div class="prize-amounts">
+                            <div class="prize-sm">$2,000</div>
+                            <div class="prize-md">$5,000</div>
+                            <div class="prize-lg">$8,000</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Week 3 -->
+                    <div class="prize-week">
+                        <div class="prize-badge"><span>Week 3 Prizes</span></div>
+                        <div class="prize-amounts">
+                            <div class="prize-sm">$3,000</div>
+                            <div class="prize-md">$8,000</div>
+                            <div class="prize-lg">$12,000</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="disclaimer-xs">
+                    *Only verified homeowners are eligible to win and prizes to be
+                    given in e-Capitaland vouchers. T&amp;Cs apply.
+                </div>
+
+            </div>
+            <!-- END Prizes Section -->
+
+            <!-- T&C Section -->
+            <div class="tnc-section">
+
+                <div class="tnc-heading">Lucky Draw Terms &amp; Conditions</div>
+
+                <div class="tnc-text">
+                    1) Campaign duration: 17 August - 6 September 2026.
+                </div>
+
+                <div class="tnc-text">
+                    2) Open to eligible residents of Singapore aged 18 years and above.
+                </div>
+
+                <div class="tnc-inline">
+                    <span class="tnc-text">3) Lucky Draw winners may check the results </span>
+                    <a href="#" class="tnc-link">here</a>
+                    <span class="tnc-text"> each week.</span>
+                </div>
+
+                <div class="tnc-text">
+                    4) Terms and conditions apply. Participation is subject to
+                    eligibility and verification requirements.
+                </div>
+
+                <div class="tnc-inline">
+                    <span class="tnc-text">For more Term &amp; Conditions: </span>
+                    <a href="#" class="tnc-link">Download here</a>
+                </div>
+
+            </div>
+            <!-- END T&C -->
+
+        </div>
+        <!-- END CONTENT -->
+
+    </div>
+</body>
+</html>
